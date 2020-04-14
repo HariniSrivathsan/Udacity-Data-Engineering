@@ -2,7 +2,7 @@
 
 Introduction
 
-A startup comapany called Sparkify want to analyze the data they have been collecting on songs and user activity on their new music streaming app. The analytics team is particularly interested in understanding what songs users are listening to.
+A startup company called Sparkify want to analyze the data they have been collecting on songs and user activity on their new music streaming app. The analytics team is particularly interested in understanding what songs users are listening to.
 
 This can be easily analyzed by creating a star schema in Postgres Database and establising ETL pipelines to optimize queries for song play analysis.
 
