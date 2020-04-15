@@ -10,7 +10,7 @@ Project Description
 
 In this project, I have to model data with Postgres and build and ETL pipeline using Python. On the database side, I have to define dimension and fact tables for a Star Schema for a analytic focus.
 
-I should also create ETL pipelines would transfer data from jason files located in two local directories into these tables in Postgres using Python and SQL.
+I should also create ETL pipelines would transfer data from json files located in two local directories into these tables in Postgres using Python and SQL.
 
 Schema for Song Play Analysis
 
