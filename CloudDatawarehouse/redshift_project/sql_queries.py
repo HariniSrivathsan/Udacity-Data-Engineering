@@ -70,9 +70,9 @@ CREATE TABLE IF NOT EXISTS fact_songplay
    start_time           TIMESTAMP NOT NULL,
    user_id              INTEGER NOT NULL REFERENCES dim_user (user_id),
    level                VARCHAR(25),
-   song_id              VARCHAR(100) REFERENCES dim_song (song_id),
-   artist_id            VARCHAR(100) REFERENCES dim_artist (artist_id),
-   session_id           INTEGER NOT NULL,
+   song_id              VARCHAR(100) NOT NULL REFERENCES dim_song (song_id),
+   artist_id            VARCHAR(100) NOT NULL REFERENCES dim_artist (artist_id),
+   session_id           INTEGER,
    location             VARCHAR(500),
    user_agent           VARCHAR(500)
 )DISTSTYLE EVEN 
@@ -91,9 +91,9 @@ CREATE TABLE IF NOT EXISTS dim_user(
 song_table_create = ("""
 CREATE TABLE IF NOT EXISTS dim_song(
      song_id     VARCHAR(20) PRIMARY KEY,
-     title       VARCHAR(500) NOT NULL,
+     title       VARCHAR(500),
      artist_id   VARCHAR(20) NOT NULL DISTKEY REFERENCES dim_artist (artist_id),
-     year        INTEGER NOT NULL,
+     year        INTEGER,
      duration    DECIMAL(15,5) NOT NULL);
 """)
 
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS dim_song(
 artist_table_create = ("""
 CREATE TABLE IF NOT EXISTS dim_artist(
      artist_id          VARCHAR PRIMARY KEY SORTKEY distkey,
-     name               VARCHAR(500) NOT NULL,
+     name               VARCHAR(500),
      location           VARCHAR(500),
      latitude           FLOAT,
      longitude          FLOAT
@@ -111,12 +111,12 @@ CREATE TABLE IF NOT EXISTS dim_artist(
 time_table_create = ("""
 CREATE TABLE IF NOT EXISTS dim_time(
      start_time    TIMESTAMP PRIMARY KEY sortkey,
-      hour          INTEGER NOT NULL,
-      day           INTEGER NOT NULL,
-      week          INTEGER NOT NULL,
-      month         INTEGER NOT NULL,
-      year          INTEGER NOT NULL,
-      weekday       INTEGER NOT NULL
+      hour          INTEGER,
+      day           INTEGER,
+      week          INTEGER,
+      month         INTEGER,
+      year          INTEGER,
+      weekday       INTEGER
 );
 """)
 
