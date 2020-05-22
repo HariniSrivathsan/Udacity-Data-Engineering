@@ -1,27 +1,24 @@
-import sys
+
+import helpers
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 
-#sys.path.insert(1, '/home/srivathsan/harini/playground_udacity/data-engineering/playground/input/Data_Pipelines/project/plugins/operators/')
+#from airflow.operators import (StageToRedshiftOperator, LoadFactOperator, LoadDimensionOperator, DataQualityOperator)
 
-from airflow.operators import StageToRedshiftOperator
-from airflow.operators import LoadFactOperator
-from airflow.operators import LoadDimensionOperator
-from airflow.operators import DataQualityOperator
+from operators import (StageToRedshiftOperator, LoadFactOperator, LoadDimensionOperator, DataQualityOperator)
 
-from helpers import sqlQueries
-#import helpers
+from helpers import SqlQueries
 
 default_args = {
-    'owner': 'fs',
-    'start_date': datetime(2020, 5, 20),
+    'owner': 'harini',
+    'start_date': datetime(2020, 5, 22),
     'email_on_retry': False,
     'retries': 3,
     'retry_delay': timedelta(minutes=5),
     'catchup': False,
     'depends_on_past': False,
-    'schedule_interval': '@hourly'
+    'schedule_interval': '@daily'
 }
 
 dag = DAG(

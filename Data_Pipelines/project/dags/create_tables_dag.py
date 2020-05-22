@@ -6,13 +6,13 @@ import sql_statements
 
 default_args = {
     'owner': 'harini',
-    'start_date': datetime(2020, 5, 20),
+    'start_date': datetime(2020, 5, 22),
     'email_on_retry': False,
     'retries': 3,
     'retry_delay': timedelta(minutes=5),
     'catchup': False,
     'depends_on_past': False,
-    'schedule_interval': '@hourly'
+    'schedule_interval': '@daily'
 }
 
 dag = DAG(
