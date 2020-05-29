@@ -18,7 +18,7 @@ default_args = {
     'retry_delay': timedelta(minutes=5),
     'catchup': False,
     'depends_on_past': False,
-    'schedule_interval': '@daily'
+    'schedule_interval': '@hourly'
 }
 
 dag = DAG(
